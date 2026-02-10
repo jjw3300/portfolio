@@ -13,12 +13,14 @@ import {
   CheckCircle2,
   Sun,
   Moon,
+  Image,
 } from "lucide-react";
 
 import githubLogo from "./assets/logo/github.svg";
 import tistoryLogo from "./assets/logo/tistory.svg";
 import figmaLogo from "./assets/logo/figma.svg";
 import instagramLogo from "./assets/logo/instagram.svg";
+import profileImg from "./assets/profile.jpg";
 
 const LogoImages = {
   Github: githubLogo,
@@ -34,13 +36,13 @@ const DarkModeToggle: React.FC<{
   return (
     <button
       onClick={toggleDarkMode}
-      className={`relative w-16 h-9 rounded-full p-1 transition-colors duration-300 focus:outline-none shadow-sm overflow-hidden ${
+      className={`relative w-16 h-9 rounded-lg p-1 transition-colors duration-300 focus:outline-none shadow-sm overflow-hidden ${
         darkMode ? "bg-zinc-800" : "bg-zinc-100"
       }`}
       aria-label="Toggle Dark Mode"
     >
       <motion.div
-        className="w-7 h-7 bg-white dark:bg-zinc-600 rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.1)] flex items-center justify-center relative z-10"
+        className="w-7 h-7 bg-white dark:bg-zinc-600 rounded-lg shadow-[0_2px_4px_rgba(0,0,0,0.1)] flex items-center justify-center relative z-10"
         layout
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         style={{
@@ -245,32 +247,32 @@ const App: React.FC = () => {
     },
     {
       title: "Design",
-      icon: <img src={LogoImages.Figma} alt="Figma" className="w-4 h-4" />,
+      icon: <Image className="w-4 h-4 text-red-500" />,
       items: ["Figma", "Framer"],
     },
   ];
 
   return (
-    <div className="bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-blue-100 dark:selection:bg-blue-900/30 flex flex-col justify-between">
-      <header className="fixed top-0 left-0 right-0 z-50 h-24 md:h-32 flex items-center justify-center pointer-events-none">
-        <nav className="pointer-events-auto flex items-center gap-2 p-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-full border border-zinc-200 dark:border-zinc-800 shadow-lg pr-2">
+    <div className="bg-fefefe dark:bg-000000 min-h-screen font-sans selection:bg-blue-100 dark:selection:bg-blue-900/30 flex flex-col justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 h-24 flex items-start justify-center pointer-events-none pt-8">
+        <div className="pointer-events-auto">
           <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        </nav>
+        </div>
       </header>
 
       <div ref={targetRef} className="w-full relative h-auto md:h-[350vh]">
         <div className="relative md:sticky md:top-0 md:left-0 md:h-screen w-full md:overflow-hidden flex md:items-center">
           <motion.div
             style={{ x: isMobile ? 0 : smoothX }}
-            className="flex flex-col md:flex-row items-center gap-10 md:gap-12 px-6 py-32 md:py-0 md:px-0 md:pl-[10vw] md:pr-[10vw] w-full"
+            className="flex flex-col md:flex-row items-center gap-10 md:gap-12 px-6 py-32 md:py-0 md:px-0 md:pl-[5vw] md:pr-[10vw] w-full"
           >
-            <div className="w-full md:w-[80vw] h-auto md:h-[70vh] shrink-0 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-6">
-              <div className="w-full md:col-span-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between shadow-sm relative overflow-hidden h-112.5 md:h-full">
+            <div className="w-full md:w-[90vw] h-auto md:h-[70vh] shrink-0 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-6">
+              <div className="w-full md:col-span-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between shadow-sm relative overflow-hidden h-112.5 md:h-full">
                 <div className="z-10">
                   <div className="flex items-center gap-5 mb-6">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-3xl overflow-hidden bg-zinc-100 border border-zinc-100 dark:border-zinc-800 shrink-0 shadow-inner">
                       <img
-                        src="https://picsum.photos/seed/profile/200/200"
+                        src={profileImg}
                         alt="Profile"
                         className="w-full h-full object-cover"
                       />
@@ -288,7 +290,7 @@ const App: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <h1 className="text-4xl md:text-5xl lg:text-5xl font-black text-zinc-900 dark:text-white leading-[1.1] tracking-tight mb-6 break-keep">
+                  <h1 className="text-4xl md:text-4xl lg:text-4xl font-black text-zinc-900 dark:text-white leading-[1.1] tracking-tight mb-6 break-keep">
                     사용자 경험을
                     <br />
                     <span className="text-blue-500">최우선으로 생각하는</span>
@@ -313,7 +315,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-full md:h-full md:col-span-4 flex flex-col gap-4 md:gap-4 shrink-0 h-auto">
+              <div className="w-full md:h-full md:col-span-5 flex flex-col gap-4 md:gap-4 shrink-0 h-auto">
                 <div className="grid grid-cols-2 grid-rows-2 gap-4 flex-1">
                   <StyledSocialCard
                     href="https://jjw3300.tistory.com/"
@@ -370,7 +372,7 @@ const App: React.FC = () => {
               title="PORTMATCH"
               subtitle="포트폴리오 기반 매칭 플랫폼"
               period="2026.01"
-              description="구직자와 기업을 포트폴리오로 연결하며, 면접 제안부터 일정 확정까지 원스톱으로 진행하는 플랫폼입니다. 실시간 데이터 동기화를 통해 채용 프로세스 시간을 40% 단축했습니다."
+              description="구직자와 기업을 포트폴리오로 연결하며, 면접부터 취업까지 해결하는 플랫폼입니다. 실시간 데이터 동기화를 통해 채용 프로세스 과정을 간편화 했습니다."
               features={[
                 "Firestore onSnapshot 기반 실시간 일정 동기화",
                 "240개 파티클 모핑 애니메이션 인트로",
@@ -383,7 +385,7 @@ const App: React.FC = () => {
               title="Giterra"
               subtitle="GitHub 데이터 3D 시각화"
               period="2026.02"
-              description="GitHub 활동 데이터를 우주 속 홀로그램 행성 컨셉으로 재해석한 몰입형 프로파일러입니다. 텍스트 데이터를 3D 인터랙션으로 변환하여 시각적 즐거움을 제공합니다."
+              description="GitHub 활동 데이터를 우주 속 행성 컨셉으로 재해석한 몰입형 프로파일러입니다. 텍스트 데이터를 3D 인터랙션으로 변환하여 시각적 즐거움을 제공합니다."
               features={[
                 "CSS3D Perspective 활용 원통형 드래그 UI",
                 "스캔라인 및 네온 글로우 효과 시스템 구축",
@@ -438,10 +440,10 @@ const App: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-base md:text-lg text-zinc-900 dark:text-white">
-                        Strict Typing
+                        Test Typing
                       </h4>
                       <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
-                        any를 지양하고 컴파일 단계에서 오류를 제어합니다.
+                        추가예정
                       </p>
                     </div>
                   </div>
@@ -454,10 +456,42 @@ const App: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-base md:text-lg text-zinc-900 dark:text-white">
-                        Clean Code
+                        Test Code
                       </h4>
                       <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
-                        주석 없이도 읽히는 명확한 로직을 지향합니다.
+                        추가 예정
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 md:gap-6 items-start">
+                    <div className="p-3 bg-zinc-50 dark:bg-zinc-800 rounded-2xl shadow-sm shrink-0 border border-zinc-100 dark:border-zinc-700">
+                      <Clock
+                        size={24}
+                        className="text-zinc-700 dark:text-zinc-300"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base md:text-lg text-zinc-900 dark:text-white">
+                        Test Code
+                      </h4>
+                      <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                        추가 예정
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 md:gap-6 items-start">
+                    <div className="p-3 bg-zinc-50 dark:bg-zinc-800 rounded-2xl shadow-sm shrink-0 border border-zinc-100 dark:border-zinc-700">
+                      <Sun
+                        size={24}
+                        className="text-zinc-700 dark:text-zinc-300"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base md:text-lg text-zinc-900 dark:text-white">
+                        Test Code
+                      </h4>
+                      <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                        추가 예정
                       </p>
                     </div>
                   </div>
@@ -470,9 +504,7 @@ const App: React.FC = () => {
 
       <footer className="relative md:fixed bottom-0 left-0 right-0 z-50 h-24 md:h-24 flex items-center justify-center bg-zinc-50 dark:bg-black pointer-events-none mt-10 md:mt-0">
         <div className="text-center pointer-events-auto">
-          <p className="text-md text-zinc-400 mt-2">
-            © 2026 site by Jang Jin Uk
-          </p>
+          <p className="text-md text-zinc-400 mt-2">© 2026 site by @jjw3300</p>
         </div>
       </footer>
     </div>
