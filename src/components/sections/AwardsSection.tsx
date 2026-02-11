@@ -3,7 +3,7 @@ import { Trophy, Award } from "lucide-react";
 
 const AwardsSection: React.FC = () => {
   return (
-    <div className="w-full md:w-[35vw] h-auto md:h-[70vh] shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-10 flex flex-col justify-center relative overflow-hidden">
+    <div className="w-full md:w-125 h-auto md:h-[70vh] shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-10 flex flex-col justify-center relative overflow-hidden">
       <div className="z-10 space-y-6 md:space-y-8">
         <h3 className="text-xl md:text-3xl font-black text-zinc-900 dark:text-white flex items-center gap-3">
           Awards & Certifications

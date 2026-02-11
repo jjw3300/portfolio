@@ -79,7 +79,7 @@ const TechItemRow: React.FC<{ item: TechItem; styles: StyleConfig }> = ({
 
 const TechStackSection: React.FC = () => {
   return (
-    <div className="w-full md:w-[95vw] xl:w-[75vw] h-auto md:h-[70vh] shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 md:p-6 flex flex-col relative transition-all duration-300">
+    <div className="w-full md:w-275 h-auto md:h-[70vh] shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 md:p-6 flex flex-col relative transition-all duration-300">
       <div className="shrink-0 mb-3 md:mb-5">
         <h3 className="text-2xl md:text-3xl font-black text-zinc-900 dark:text-white flex items-center gap-3 tracking-tight">
           Tech Stack
