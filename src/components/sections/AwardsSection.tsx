@@ -19,7 +19,7 @@ const AwardsSection: React.FC = () => {
               </h4>
               <ul className="mt-1.5 space-y-1">
                 <li className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                  싸피 기자단 최우수상
+                  SSAFY 기자단 최우수상
                 </li>
               </ul>
             </div>

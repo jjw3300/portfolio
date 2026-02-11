@@ -83,7 +83,7 @@ const App: React.FC = () => {
 
       <footer className="fixed bottom-8 left-0 right-0 z-50 flex items-center justify-center pointer-events-none">
         <div className="text-center pointer-events-auto">
-          <p className="text-md text-zinc-400">© 2026 site by @jjw3300</p>
+          <p className="text-md text-zinc-400">© 2026 Portfolio by @jjw3300</p>
         </div>
       </footer>
     </div>

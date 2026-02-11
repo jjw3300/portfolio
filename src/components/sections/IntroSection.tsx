@@ -44,12 +44,12 @@ const IntroSection: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
-                <span>Available for freelance projects</span>
+                <span>Available for Work</span>
               </div>
             </div>
           </div>
 
-          <h1 className="text-3xl md:text-3xl lg:text-3xl font-black text-zinc-900 dark:text-white leading-[1.1] tracking-tight mb-6 break-keep">
+          <h1 className="text-4xl md:text-4xl lg:text-4xl font-black text-zinc-900 dark:text-white leading-[1.1] tracking-tight mb-6 break-keep">
             사용자 경험을
             <br />
             <span className="text-blue-500">최우선으로 생각하는</span>

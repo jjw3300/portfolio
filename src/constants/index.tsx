@@ -67,14 +67,14 @@ export const TECH_CATEGORIES: TechCategory[] = [
         description: "타입 시스템을 활용한 안정적인 대규모 아키텍처 설계 가능",
       },
       {
-        name: "C++",
-        rating: 2,
-        description: "자료구조와 알고리즘 기반의 성능 최적화 로직 구현 가능",
-      },
-      {
         name: "JavaScript",
         rating: 3,
         description: "ES6+ 문법 및 비동기 처리에 능숙하며 런타임 환경 이해",
+      },
+      {
+        name: "C++",
+        rating: 2,
+        description: "자료구조와 알고리즘 기반의 성능 최적화 로직 구현 가능",
       },
       {
         name: "Python",
