@@ -5,7 +5,7 @@ import DarkModeToggle from "./components/ui/DarkModeToggle";
 import ProjectCard from "./components/ui/ProjectCard";
 import IntroSection from "./components/sections/IntroSection";
 import TechStackSection from "./components/sections/TechStackSection";
-import PhilosophySection from "./components/sections/PhilosophySection";
+import AwardsSection from "./components/sections/AwardsSection";
 
 import { PROJECT_DATA } from "./constants";
 
@@ -52,7 +52,7 @@ const App: React.FC = () => {
   }, [darkMode]);
 
   return (
-    <div className="bg-[#fefefe] dark:bg-[#000000] min-h-screen font-sans flex flex-col justify-between transition-colors duration-300">
+    <div className="bg-[#fefefe] dark:bg-[#000000] min-h-screen font-sans flex flex-col transition-colors duration-300">
       <header className="fixed top-0 left-0 right-0 z-50 h-24 flex items-start justify-center pointer-events-none pt-8">
         <div className="pointer-events-auto">
           <DarkModeToggle
@@ -76,14 +76,14 @@ const App: React.FC = () => {
 
             <TechStackSection />
 
-            <PhilosophySection />
+            <AwardsSection />
           </motion.div>
         </div>
       </div>
 
-      <footer className="relative md:fixed bottom-0 left-0 right-0 z-50 h-24 flex items-center justify-center bg-[#fefefe] dark:bg-[#000000] pointer-events-none mt-10 md:mt-0 transition-colors duration-300">
+      <footer className="fixed bottom-8 left-0 right-0 z-50 flex items-center justify-center pointer-events-none">
         <div className="text-center pointer-events-auto">
-          <p className="text-md text-zinc-400 mt-2">© 2026 site by @jjw3300</p>
+          <p className="text-md text-zinc-400">© 2026 site by @jjw3300</p>
         </div>
       </footer>
     </div>

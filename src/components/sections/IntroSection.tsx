@@ -1,15 +1,13 @@
 import React from "react";
-import { MapPin, Clock, Mail } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import SocialCard from "../ui/SocialCard";
 
-// 이미지 경로
 import githubLogo from "../../assets/logo/github.svg";
 import tistoryLogo from "../../assets/logo/tistory.svg";
 import figmaLogo from "../../assets/logo/figma.svg";
 import instagramLogo from "../../assets/logo/instagram.svg";
+import gmailLogo from "../../assets/logo/gmail.svg";
 import profileImg from "../../assets/profile.jpg";
-
-// 로컬 이미지 Import
 import solvedLogo from "../../assets/logo/solved.svg";
 import artstationLogo from "../../assets/logo/artstation.svg";
 
@@ -20,12 +18,12 @@ const LogoImages = {
   Instagram: instagramLogo,
   SolvedAc: solvedLogo,
   ArtStation: artstationLogo,
+  Gmail: gmailLogo,
 };
 
 const IntroSection: React.FC = () => {
   return (
     <div className="w-full md:w-[90vw] h-auto md:h-[70vh] shrink-0 flex flex-col md:grid md:grid-cols-[7.5fr_4.5fr] gap-4 md:gap-6">
-      {/* 1. 왼쪽: 프로필 영역 */}
       <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-sm relative overflow-hidden h-112.5 md:h-full">
         <div className="z-10 relative">
           <div className="flex items-center gap-6 mb-8">
@@ -78,9 +76,7 @@ const IntroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. 오른쪽: 소셜 카드 영역 (변경 없음) */}
       <div className="w-full md:h-full grid grid-rows-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-3 shrink-0 h-auto">
-        {/* [상단 구역] Tech */}
         <div className="grid grid-cols-[7fr_5fr] gap-3 h-full">
           <SocialCard
             href="https://jjw3300.tistory.com/"
@@ -106,20 +102,22 @@ const IntroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* [중앙 구역] 이메일 */}
         <a
           href="mailto:jjw011232@gmail.com"
           className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-4xl p-4 flex items-center gap-3 transition-colors duration-200 hover:scale-[1.02] shadow-sm group relative z-10"
         >
-          <div className="text-zinc-900 dark:text-white">
-            <Mail size={20} />
+          <div className="w-5 h-5 shrink-0">
+            <img
+              src={LogoImages.Gmail}
+              alt="Gmail"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="text-base md:text-lg font-bold text-zinc-900 dark:text-white truncate">
             jjw011232@gmail.com
           </div>
         </a>
 
-        {/* [하단 구역] Design */}
         <div className="grid grid-cols-[5fr_7fr] gap-3 h-full">
           <div className="flex flex-col gap-3 h-full">
             <SocialCard
