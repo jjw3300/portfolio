@@ -11,6 +11,18 @@ const ScrollOnboarding = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useLayoutEffect(() => {
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    const fixedElements = document.querySelectorAll("header, footer");
+
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+    fixedElements.forEach((el) => {
+      (el as HTMLElement).style.paddingRight = `${scrollbarWidth}px`;
+    });
+
     document.documentElement.style.scrollBehavior = "auto";
     document.body.style.scrollBehavior = "auto";
 
@@ -18,22 +30,28 @@ const ScrollOnboarding = () => {
       history.scrollRestoration = "manual";
     }
     window.scrollTo(0, 0);
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+
+      fixedElements.forEach((el) => {
+        (el as HTMLElement).style.paddingRight = "";
+      });
+
+      document.documentElement.style.scrollBehavior = "";
+      document.body.style.scrollBehavior = "";
+    };
   }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      document.body.style.overflow = "hidden";
-
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const targetScroll = maxScroll > 0 ? maxScroll * 0.2 : window.innerHeight;
 
       const tl = gsap.timeline({
         onComplete: () => {
-          document.body.style.overflow = "";
           setIsVisible(false);
-
-          document.documentElement.style.scrollBehavior = "";
-          document.body.style.scrollBehavior = "";
         },
       });
 
