@@ -23,7 +23,7 @@ const LogoImages = {
 
 const IntroSection: React.FC = () => {
   return (
-    <div className="w-full md:w-275 h-auto md:h-[70vh] shrink-0 flex flex-col md:grid md:grid-cols-[7.5fr_4.5fr] gap-4 md:gap-6">
+    <div className="w-full md:w-275 h-auto md:h-130 shrink-0 flex flex-col md:grid md:grid-cols-[7.5fr_4.5fr] gap-4 md:gap-6">
       <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-sm relative overflow-hidden h-112.5 md:h-full">
         <div className="z-10 relative">
           <div className="flex items-center gap-6 mb-8">
