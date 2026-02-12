@@ -40,8 +40,6 @@ export interface StyleConfig {
   star: string;
 }
 
-/** * Styles & Theme Constants
- */
 export const COLOR_MAP: Record<string, StyleConfig> = {
   "text-amber-500": {
     iconBox:
@@ -67,8 +65,6 @@ export const COLOR_MAP: Record<string, StyleConfig> = {
   },
 };
 
-/** * Data Constants
- */
 export const PROJECT_DATA: Project[] = [
   {
     title: "Portmatch",
@@ -108,29 +104,33 @@ export const TECH_CATEGORIES: TechCategory[] = [
     items: [
       {
         name: "TypeScript",
-        rating: 3,
-        description: "타입 시스템을 활용한 안정적인 대규모 아키텍처 설계 가능",
+        rating: 2,
+        description:
+          "정적 타이핑과 고급 타입을 활용해 독립적인 모듈 설계 및 디버깅 가능",
       },
       {
         name: "JavaScript",
-        rating: 3,
-        description: "ES6+ 문법 및 비동기 처리에 능숙하며 런타임 환경 이해",
+        rating: 2,
+        description:
+          "ES6+ 문법과 비동기 처리에 숙달되어 복잡한 비즈니스 로직을 독립적으로 구현",
       },
       {
         name: "Python",
         rating: 2,
-        description: "자료구조와 알고리즘 기반의 성능 최적화 로직 구현 가능",
+        description:
+          "언어 특성을 이해하고 라이브러리를 활용해 데이터 처리 및 기능 구현 가능",
       },
       {
         name: "C++",
         rating: 2,
-        description: "STL 활용 및 객체지향 프로그래밍 기반의 데이터 처리 가능",
+        description:
+          "STL 및 객체지향 개념을 숙지하여 효율적인 알고리즘 및 데이터 구조 구현",
       },
       {
         name: "Java",
         rating: 1,
         description:
-          "기초 문법 숙지 및 객체지향 개념을 활용한 간단한 애플리케이션 개발",
+          "기초 문법과 객체지향의 기본 개념을 이해하며 기초적인 코드 해석 및 작성 가능",
       },
     ],
   },
@@ -141,24 +141,27 @@ export const TECH_CATEGORIES: TechCategory[] = [
     items: [
       {
         name: "React",
-        rating: 3,
-        description: "재사용 가능한 컴포넌트 설계 및 고성능 UI/UX 구현",
-      },
-      {
-        name: "Zustand",
-        rating: 3,
-        description: "복잡한 전역 상태 관리 및 리렌더링 최적화 숙달",
-      },
-      {
-        name: "Framer Motion",
-        rating: 3,
+        rating: 2,
         description:
-          "선언적 API를 활용한 복잡한 인터랙션 및 마이크로 애니메이션 구현",
+          "컴포넌트 생명주기와 다양한 Hook을 활용하여 요구사항에 맞는 UI 기능을 독립적으로 구현 가능",
       },
       {
         name: "Tailwind",
-        rating: 3,
-        description: "커스텀 설정과 유틸리티 클래스를 활용한 빠른 스타일링",
+        rating: 2,
+        description:
+          "커스텀 설정과 유틸리티 클래스를 조합하여 반응형 웹 UI를 신속하게 빌드 및 유지보수 가능",
+      },
+      {
+        name: "Framer Motion",
+        rating: 2,
+        description:
+          "선언적 API와 제스처 이벤트를 숙달하여 생동감 있는 인터랙션 및 애니메이션 구현 가능",
+      },
+      {
+        name: "Zustand",
+        rating: 2,
+        description:
+          "중앙 집중식 상태 관리 저장소를 구축하고 컴포넌트 간 데이터 흐름을 안정적으로 제어 가능",
       },
     ],
   },
@@ -170,18 +173,20 @@ export const TECH_CATEGORIES: TechCategory[] = [
       {
         name: "Firebase",
         rating: 2,
-        description: "NoSQL 기반 실시간 데이터베이스 설계 및 인증 시스템 구현",
+        description:
+          "실시간 데이터베이스 및 인증 시스템을 독립적으로 구축하고 운영 가능",
       },
       {
         name: "Git",
-        rating: 1,
-        description: "Git-flow 전략을 활용한 브랜치 관리 및 충돌 해결 경험",
+        rating: 2,
+        description:
+          "브랜치 전략을 숙지하여 협업 과정에서의 형상 관리 및 충돌 문제 해결 경험",
       },
       {
         name: "Vercel",
-        rating: 2,
+        rating: 1,
         description:
-          "프로젝트 특성에 맞는 최적화된 배포 전략 및 CI/CD 환경 구축",
+          "제공되는 플랫폼 기능을 활용하여 프로젝트 배포 및 기본 환경 설정 수행 가능",
       },
     ],
   },
@@ -193,17 +198,20 @@ export const TECH_CATEGORIES: TechCategory[] = [
       {
         name: "Figma",
         rating: 3,
-        description: "컴포넌트 단위 디자인 시스템 구축 및 프로토타이핑",
-      },
-      {
-        name: "Aseprite",
-        rating: 2,
-        description: "프레임 애니메이션 제작 및 게임용 도트 에셋 작업 가능",
+        description:
+          "디자인 시스템의 원리를 이해하고 변수와 컴포넌트를 활용한 효율적인 설계 구현 가능",
       },
       {
         name: "DaVinci Resolve",
+        rating: 2,
+        description:
+          "편집 툴의 기능을 숙달하여 독립적인 영상 컷 편집 및 효과 적용 가능",
+      },
+      {
+        name: "Aseprite",
         rating: 1,
-        description: "기본적인 영상 컷 편집 및 유튜브 업로드용 후보정 작업",
+        description:
+          "기초적인 툴 사용법을 익혀 가이드라인에 따른 도트 그래픽 에셋 제작 가능",
       },
     ],
   },
