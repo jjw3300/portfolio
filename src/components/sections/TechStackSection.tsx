@@ -1,5 +1,5 @@
-import React from "react";
-import { Star } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   TECH_CATEGORIES,
   type TechItem,
@@ -58,21 +58,166 @@ const StarRating: React.FC<{ rating: number; colorClass: string }> = ({
   );
 };
 
-const TechItemRow: React.FC<{ item: TechItem; styles: StyleConfig }> = ({
-  item,
-  styles,
-}) => {
+const TechItemRow: React.FC<{
+  item: TechItem;
+  styles: StyleConfig;
+  isExpanded: boolean;
+  hasActiveExpansion: boolean;
+  onToggle: () => void;
+}> = ({ item, styles, isExpanded, hasActiveExpansion, onToggle }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isExpanded && scrollRef.current) {
+      scrollRef.current.scrollTop = 0;
+    }
+  }, [isExpanded]);
+
+  const containerHeight = isExpanded
+    ? "h-[220px]"
+    : hasActiveExpansion
+      ? "h-[40px]"
+      : "h-[85px]";
+
+  const contentOpacity = isExpanded
+    ? "opacity-100 delay-100"
+    : hasActiveExpansion
+      ? "opacity-0"
+      : "opacity-100";
+
   return (
-    <div className="group/item flex flex-col justify-center gap-0.5 py-2.5 first:pt-0 border-b border-dashed border-zinc-200 dark:border-zinc-800 last:border-0 last:pb-0 shrink-0">
-      <div className="flex justify-between items-center">
-        <span className="font-bold text-[13px] md:text-sm text-zinc-800 dark:text-zinc-100 transition-colors group-hover/item:text-black dark:group-hover/item:text-white">
-          {item.name}
-        </span>
-        <StarRating rating={item.rating} colorClass={styles.star} />
+    <div
+      onClick={onToggle}
+      className={`group/item flex flex-col w-full border-b border-dashed border-zinc-200 dark:border-zinc-800 last:border-b-0 cursor-pointer overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${containerHeight}`}
+    >
+      <div className="p-2.5 h-full flex flex-col">
+        <div className="flex justify-between items-center shrink-0 mb-1.5 h-5 gap-2">
+          <span
+            className={`font-bold text-[13px] md:text-sm transition-colors duration-300 truncate flex-1 ${
+              hasActiveExpansion && !isExpanded
+                ? "text-zinc-400 dark:text-zinc-600"
+                : "text-zinc-800 dark:text-zinc-100 group-hover/item:text-black dark:group-hover/item:text-white"
+            }`}
+          >
+            {item.name}
+          </span>
+          <div
+            className={`transition-opacity duration-300 shrink-0 ${
+              hasActiveExpansion && !isExpanded ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <StarRating rating={item.rating} colorClass={styles.star} />
+          </div>
+        </div>
+
+        <div
+          className={`flex-1 overflow-hidden transition-opacity duration-300 ${contentOpacity}`}
+        >
+          <div
+            ref={scrollRef}
+            className={`h-full ${
+              isExpanded
+                ? "overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-700"
+                : "overflow-hidden"
+            }`}
+          >
+            <p
+              className={`text-[11px] md:text-[13px] text-zinc-500 dark:text-zinc-400 leading-snug break-keep ${!isExpanded && "line-clamp-2"}`}
+            >
+              {item.description}
+            </p>
+          </div>
+        </div>
       </div>
-      <p className="text-[11px] md:text-[13px] text-zinc-500 dark:text-zinc-400 leading-snug break-keep opacity-90">
-        {item.description}
-      </p>
+    </div>
+  );
+};
+
+const CategoryCard: React.FC<{ category: TechCategory }> = ({ category }) => {
+  const [page, setPage] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const ITEMS_PER_PAGE = 4;
+
+  const styles = COLOR_MAP[category.color] || COLOR_MAP["text-amber-500"];
+  const totalPages = Math.ceil(category.items.length / ITEMS_PER_PAGE);
+
+  const handlePrev = () => {
+    setPage((p) => Math.max(0, p - 1));
+    setExpandedIndex(null);
+  };
+  const handleNext = () => {
+    setPage((p) => Math.min(totalPages - 1, p + 1));
+    setExpandedIndex(null);
+  };
+
+  const handleToggle = (idx: number) => {
+    setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
+
+  const currentItems = category.items.slice(
+    page * ITEMS_PER_PAGE,
+    (page + 1) * ITEMS_PER_PAGE,
+  );
+
+  return (
+    <div className="rounded-xl p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex flex-col gap-2.5 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-300 h-full overflow-hidden">
+      <div className="flex items-center justify-between mb-0.5 shrink-0 h-6">
+        <div className="flex items-center gap-2 overflow-hidden flex-1">
+          <div className={`p-1.5 rounded-lg ${styles.iconBox} shrink-0`}>
+            {category.icon && React.isValidElement(category.icon)
+              ? React.cloneElement(
+                  category.icon as React.ReactElement<{
+                    size: number | string;
+                  }>,
+                  { size: 14 },
+                )
+              : null}
+          </div>
+          <h4
+            className={`font-bold text-xs md:text-sm uppercase tracking-wide ${styles.title} truncate`}
+          >
+            {category.title}
+          </h4>
+        </div>
+
+        {category.items.length > ITEMS_PER_PAGE && (
+          <div className="flex items-center gap-1 shrink-0 ml-2">
+            <button
+              onClick={handlePrev}
+              disabled={page === 0}
+              className="p-0.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-500 dark:text-zinc-400 transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={page === totalPages - 1}
+              className="p-0.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-30 disabled:cursor-not-allowed text-zinc-500 dark:text-zinc-400 transition-colors"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="flex flex-col flex-1 border-y border-dashed border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        {currentItems.map((item, itemIdx) => (
+          <TechItemRow
+            key={`${page}-${itemIdx}`}
+            item={item}
+            styles={styles}
+            isExpanded={expandedIndex === itemIdx}
+            hasActiveExpansion={expandedIndex !== null}
+            onToggle={() => handleToggle(itemIdx)}
+          />
+        ))}
+
+        {currentItems.length < ITEMS_PER_PAGE &&
+          Array.from({ length: ITEMS_PER_PAGE - currentItems.length }).map(
+            (_, i) => <div key={`placeholder-${i}`} className="h-21.25" />,
+          )}
+      </div>
     </div>
   );
 };
@@ -88,43 +233,9 @@ const TechStackSection: React.FC = () => {
 
       <div className="flex-1 min-h-0 w-full overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3.5 h-full">
-          {TECH_CATEGORIES.map((category: TechCategory, idx) => {
-            const styles =
-              COLOR_MAP[category.color] || COLOR_MAP["text-amber-500"];
-
-            return (
-              <div
-                key={idx}
-                className="rounded-xl p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex flex-col gap-2.5 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-300 h-full overflow-hidden"
-              >
-                <div className="flex items-center gap-2 mb-0.5 shrink-0">
-                  <div
-                    className={`p-1.5 rounded-lg ${styles.iconBox} shrink-0`}
-                  >
-                    {category.icon && React.isValidElement(category.icon)
-                      ? React.cloneElement(
-                          category.icon as React.ReactElement<{
-                            size: number | string;
-                          }>,
-                          { size: 14 },
-                        )
-                      : null}
-                  </div>
-                  <h4
-                    className={`font-bold text-xs md:text-sm uppercase tracking-wide ${styles.title} truncate`}
-                  >
-                    {category.title}
-                  </h4>
-                </div>
-
-                <div className="flex flex-col flex-1 justify-start gap-1 overflow-hidden">
-                  {category.items.map((item, itemIdx) => (
-                    <TechItemRow key={itemIdx} item={item} styles={styles} />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+          {TECH_CATEGORIES.map((category: TechCategory, idx) => (
+            <CategoryCard key={idx} category={category} />
+          ))}
         </div>
       </div>
     </div>

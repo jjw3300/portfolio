@@ -62,7 +62,6 @@ const AchievementRow: React.FC<{ item: AchievementItem }> = ({ item }) => {
   );
 };
 
-// 섹션 블록 (페이지네이션 로직 포함)
 const SectionBlock: React.FC<{
   title: string;
   icon: React.ReactNode;
@@ -81,13 +80,11 @@ const SectionBlock: React.FC<{
 
   return (
     <div className="flex gap-4 md:gap-6 h-full">
-      {/* 아이콘 */}
       <div className="p-3 h-fit bg-zinc-50 dark:bg-zinc-800 rounded-2xl shadow-sm shrink-0 border border-zinc-100 dark:border-zinc-700">
         {icon}
       </div>
 
       <div className="flex-1 flex flex-col min-w-0">
-        {/* 헤더: 제목 + 화살표 */}
         <div className="flex justify-between items-center mb-3 h-7 shrink-0">
           <h4 className="font-bold text-base md:text-lg text-zinc-900 dark:text-white">
             {title}
@@ -113,12 +110,10 @@ const SectionBlock: React.FC<{
           )}
         </div>
 
-        {/* 리스트: 요청하신 space-y-3 유지 */}
         <ul className="space-y-3 w-full">
           {currentItems.map((item) => (
             <AchievementRow key={item.id} item={item} />
           ))}
-          {/* 페이지 아이템 부족 시 높이 유지용 투명 빈 박스 (선택 사항, 레이아웃 고정용) */}
           {Array.from({ length: ITEMS_PER_PAGE - currentItems.length }).map(
             (_, i) => (
               <li key={`placeholder-${i}`} className="h-7" aria-hidden="true" />
