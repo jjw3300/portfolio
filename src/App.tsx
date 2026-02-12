@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 import DarkModeToggle from "./components/ui/DarkModeToggle";
 import ProjectCard from "./components/ui/ProjectCard";
+import ScrollOnboarding from "./components/ui/ScrollOnboarding";
 import IntroSection from "./components/sections/IntroSection";
 import TechStackSection from "./components/sections/TechStackSection";
 import AwardsSection from "./components/sections/AwardsSection";
@@ -75,6 +76,8 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-[#fefefe] dark:bg-[#000000] min-h-screen font-sans flex flex-col transition-colors duration-300">
+      <ScrollOnboarding />
+
       <header className="fixed top-0 left-0 right-0 z-50 h-24 flex items-start justify-center pointer-events-none pt-8">
         <div className="pointer-events-auto">
           <DarkModeToggle
