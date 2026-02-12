@@ -24,7 +24,7 @@ const App: React.FC = () => {
 
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-280%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-260%"]);
 
   const smoothX = useSpring(x, {
     stiffness: 80,
@@ -83,7 +83,9 @@ const App: React.FC = () => {
 
       <footer className="fixed bottom-8 left-0 right-0 z-50 flex items-center justify-center pointer-events-none">
         <div className="text-center pointer-events-auto">
-          <p className="text-md text-zinc-400">© 2026 Portfolio by @jjw3300</p>
+          <p className="text-md text-black dark:text-zinc-200 transition-colors duration-300">
+            © 2026 Portfolio by <span className="text-zinc-400">@jjw3300</span>
+          </p>
         </div>
       </footer>
     </div>

@@ -35,7 +35,7 @@ const IntroSection: React.FC = () => {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <h2 className="text-lg md:text-lg font-bold text-zinc-900 dark:text-white leading-tight">
+              <h2 className="text-xl md:text-xl font-bold text-zinc-900 dark:text-white leading-tight">
                 장진욱
               </h2>
 

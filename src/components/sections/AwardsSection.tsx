@@ -1,34 +1,10 @@
 import React, { useState } from "react";
 import { Trophy, Award, ChevronLeft, ChevronRight, Plus } from "lucide-react";
-
-interface AchievementItem {
-  id: number;
-  title: string;
-  date?: string;
-  isEmpty?: boolean;
-}
-
-const awardsData: AchievementItem[] = [
-  { id: 1, title: "SSAFY 기자단 최우수상", date: "2026.02" },
-  { id: 2, title: "preparation", isEmpty: true },
-  { id: 3, title: "preparation", isEmpty: true },
-  { id: 4, title: "preparation", isEmpty: true },
-  { id: 5, title: "preparation", isEmpty: true },
-  { id: 6, title: "preparation", isEmpty: true },
-  { id: 7, title: "preparation", isEmpty: true },
-  { id: 8, title: "preparation", isEmpty: true },
-];
-
-const certificationsData: AchievementItem[] = [
-  { id: 1, title: "preparation", isEmpty: true },
-  { id: 2, title: "preparation", isEmpty: true },
-  { id: 3, title: "preparation", isEmpty: true },
-  { id: 4, title: "preparation", isEmpty: true },
-  { id: 5, title: "preparation", isEmpty: true },
-  { id: 6, title: "preparation", isEmpty: true },
-  { id: 7, title: "preparation", isEmpty: true },
-  { id: 8, title: "preparation", isEmpty: true },
-];
+import {
+  AWARDS_DATA,
+  CERTIFICATIONS_DATA,
+  type AchievementItem,
+} from "../../constants";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -135,28 +111,25 @@ const AwardsSection: React.FC = () => {
       </div>
 
       <div className="flex-1 flex flex-col min-h-0">
-        {/* Awards Section */}
         <div className="flex-1 min-h-0 flex flex-col justify-start">
           <SectionBlock
             title="Awards"
             icon={
               <Trophy size={18} className="text-zinc-700 dark:text-zinc-300" />
             }
-            items={awardsData}
+            items={AWARDS_DATA}
           />
         </div>
 
-        {/* Divider */}
         <div className="shrink-0 h-px bg-zinc-100 dark:bg-zinc-800 my-4" />
 
-        {/* Certifications Section */}
         <div className="flex-1 min-h-0 flex flex-col justify-start">
           <SectionBlock
             title="Certifications"
             icon={
               <Award size={18} className="text-zinc-700 dark:text-zinc-300" />
             }
-            items={certificationsData}
+            items={CERTIFICATIONS_DATA}
           />
         </div>
       </div>

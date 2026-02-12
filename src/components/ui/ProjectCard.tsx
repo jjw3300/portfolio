@@ -9,6 +9,7 @@ interface ProjectCardProps {
   features: string[];
   techStack: string[];
   video: string;
+  link: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -19,6 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   features,
   techStack,
   video,
+  link,
 }) => {
   return (
     <div className="w-full md:w-225 h-auto md:h-[70vh] shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-10 shadow-sm flex flex-col justify-center relative group overflow-hidden">
@@ -49,7 +51,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 </p>
               </div>
               <a
-                href="#"
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-zinc-100 dark:bg-zinc-800 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-zinc-900 dark:text-white shrink-0"
               >
                 <ArrowUpRight size={20} />
