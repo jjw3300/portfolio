@@ -11,24 +11,56 @@ import { PROJECT_DATA } from "./constants";
 
 const App: React.FC = () => {
   const targetRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrollRange, setScrollRange] = useState(0);
+
+  // [수정 1] 렌더링 루프 에러 해결
+  // 화면 크기 변경 감지 및 스크롤 범위 계산을 하나의 useEffect로 통합
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const mobileCheck = width < 768;
+      setIsMobile(mobileCheck);
+
+      // 모바일이 아닐 때만 가로 스크롤 범위 계산
+      if (!mobileCheck && scrollRef.current) {
+        const scrollableWidth = scrollRef.current.scrollWidth - width;
+        setScrollRange(scrollableWidth > 0 ? scrollableWidth : 0);
+      } else {
+        setScrollRange(0);
+      }
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+
+    // 초기 실행
+    handleResize();
+
+    // 리사이즈 이벤트 등록
+    window.addEventListener("resize", handleResize);
+
+    // 약간의 딜레이를 두고 한 번 더 계산 (이미지/폰트 로딩 후 레이아웃 잡힐 때 대비)
+    const timeoutId = setTimeout(handleResize, 500);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
-  const { scrollYProgress } = useScroll({ target: targetRef });
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    // 모바일일 때는 스크롤 감지 범위가 의미 없으므로 기본값 사용
+    offset: ["start start", "end end"],
+  });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-260%"]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
+  // 스크롤 부드러움 설정 (뚝뚝 끊김 방지용 설정 유지)
   const smoothX = useSpring(x, {
-    stiffness: 80,
-    damping: 30,
+    stiffness: 400,
+    damping: 90,
+    mass: 1,
     restDelta: 0.001,
   });
 
@@ -62,11 +94,33 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      <div ref={targetRef} className="w-full relative h-auto md:h-[350vh]">
-        <div className="relative md:sticky md:top-0 md:left-0 md:h-screen w-full md:overflow-hidden flex md:items-center">
+      {/* [수정 2] 모바일 스크롤 고장 해결 
+          - md:h-[400vh]: 데스크톱에서만 스크롤 트랙 높이 생성
+          - 모바일(기본)에서는 h-auto로 자연스럽게 늘어남
+      */}
+      <div
+        ref={targetRef}
+        className={`w-full relative ${isMobile ? "h-auto" : "h-[400vh]"}`}
+      >
+        {/* [수정 3] Sticky 및 Overflow 제어
+            - sticky, h-screen, overflow-hidden은 오직 데스크톱(md)에서만 적용
+            - 모바일에서는 relative로 변경하여 일반적인 세로 스크롤 허용
+        */}
+        <div
+          className={`${isMobile ? "relative w-full h-auto" : "sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center"}`}
+        >
           <motion.div
+            ref={scrollRef}
+            // 모바일이면 transform(x이동)을 아예 0으로 고정
             style={{ x: isMobile ? 0 : smoothX }}
-            className="flex flex-col md:flex-row items-center gap-4 md:gap-6 px-6 py-32 md:py-0 md:px-0 md:pl-[5vw] md:pr-[10vw] w-full"
+            // will-change-transform: 부드러운 애니메이션 최적화
+            className={`
+              w-full flex flex-col md:flex-row items-center 
+              gap-4 md:gap-6 
+              px-6 py-32 md:py-0 md:px-0 md:pl-[5vw] md:pr-[10vw] 
+              md:w-max md:h-full 
+              will-change-transform
+            `}
           >
             <IntroSection />
 
