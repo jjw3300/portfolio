@@ -51,6 +51,17 @@ const ScrollOnboarding = () => {
 
       const tl = gsap.timeline({
         onComplete: () => {
+          document.body.style.overflow = "";
+          document.body.style.paddingRight = "";
+
+          const fixedElements = document.querySelectorAll("header, footer");
+          fixedElements.forEach((el) => {
+            (el as HTMLElement).style.paddingRight = "";
+          });
+
+          document.documentElement.style.scrollBehavior = "";
+          document.body.style.scrollBehavior = "";
+
           setIsVisible(false);
         },
       });
