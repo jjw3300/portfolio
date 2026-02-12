@@ -13,7 +13,6 @@ const ScrollOnboarding = () => {
   useLayoutEffect(() => {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
-
     const fixedElements = document.querySelectorAll("header, footer");
 
     document.body.style.overflow = "hidden";
@@ -34,11 +33,9 @@ const ScrollOnboarding = () => {
     return () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
-
       fixedElements.forEach((el) => {
         (el as HTMLElement).style.paddingRight = "";
       });
-
       document.documentElement.style.scrollBehavior = "";
       document.body.style.scrollBehavior = "";
     };
@@ -46,22 +43,18 @@ const ScrollOnboarding = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const targetScroll = maxScroll > 0 ? maxScroll * 0.2 : window.innerHeight;
+      const targetScroll = window.innerHeight * 0.3;
 
       const tl = gsap.timeline({
         onComplete: () => {
           document.body.style.overflow = "";
           document.body.style.paddingRight = "";
-
           const fixedElements = document.querySelectorAll("header, footer");
           fixedElements.forEach((el) => {
             (el as HTMLElement).style.paddingRight = "";
           });
-
           document.documentElement.style.scrollBehavior = "";
           document.body.style.scrollBehavior = "";
-
           setIsVisible(false);
         },
       });
@@ -70,7 +63,6 @@ const ScrollOnboarding = () => {
         opacity: 1,
         duration: 0.5,
       })
-
         .to(wheelRef.current, {
           y: 12,
           opacity: 0,
@@ -79,27 +71,24 @@ const ScrollOnboarding = () => {
           yoyo: true,
           ease: "power1.inOut",
         })
-
         .to(mouseRef.current, {
           opacity: 0,
-          duration: 0.5,
+          duration: 0.4,
         })
-
         .to(window, {
           scrollTo: { y: targetScroll, autoKill: false },
-          duration: 1.8,
+          duration: 1.2,
           ease: "power2.inOut",
         })
-
         .to(window, {
           scrollTo: { y: 0, autoKill: false },
-          duration: 1.5,
+          duration: 1.0,
           ease: "power2.inOut",
+          delay: 0.1,
         })
-
         .to(overlayRef.current, {
           opacity: 0,
-          duration: 0.8,
+          duration: 0.6,
           pointerEvents: "none",
         });
     }, overlayRef);
@@ -111,7 +100,7 @@ const ScrollOnboarding = () => {
 
   return (
     <div ref={overlayRef} className="onboarding-overlay">
-      <div ref={mouseRef} className="mouse-icon">
+      <div ref={mouseRef} className="mouse-icon" style={{ opacity: 0 }}>
         <div ref={wheelRef} className="mouse-wheel" />
       </div>
       <p className="scroll-text">SCROLL TO EXPLORE</p>
