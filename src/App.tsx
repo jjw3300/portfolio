@@ -101,7 +101,7 @@ const App: React.FC = () => {
               w-full flex flex-col md:flex-row items-center 
               gap-4 md:gap-6 
               px-6 
-              pt-24 pb-24 md:py-0 
+              pt-24 pb-8 md:py-0 
               md:px-0 md:pl-[5vw] md:pr-[10vw] 
               md:w-max md:h-full 
               will-change-transform
@@ -120,7 +120,13 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <footer className="fixed bottom-8 left-0 right-0 z-50 flex items-center justify-center pointer-events-none">
+      <footer
+        className={`${
+          isMobile
+            ? "relative w-full py-8"
+            : "fixed bottom-8 left-0 right-0 z-50"
+        } flex items-center justify-center pointer-events-none`}
+      >
         <div className="text-center pointer-events-auto">
           <p className="text-md text-black dark:text-zinc-200 transition-colors duration-300">
             © 2026 Portfolio by <span className="text-zinc-400">@jjw3300</span>
