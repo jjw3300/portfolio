@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             loop
             muted
             playsInline
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover scale-105"
           />
         </div>
 
