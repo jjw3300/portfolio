@@ -3,11 +3,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { COLOR_MAP, type TechCategory } from "../../constants";
 import TechItemRow from "./TechItemRow";
 
+const ITEMS_PER_PAGE = 4;
+
 const CategoryCard: React.FC<{ category: TechCategory }> = ({ category }) => {
   const [page, setPage] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const ITEMS_PER_PAGE = 4;
   const styles = COLOR_MAP[category.color] || COLOR_MAP["text-amber-500"];
   const totalPages = Math.ceil(category.items.length / ITEMS_PER_PAGE);
 
@@ -33,9 +34,7 @@ const CategoryCard: React.FC<{ category: TechCategory }> = ({ category }) => {
             {React.isValidElement(category.icon) &&
               React.cloneElement(
                 category.icon as React.ReactElement<{ size: number }>,
-                {
-                  size: 14,
-                },
+                { size: 14 },
               )}
           </div>
           <h4
@@ -65,18 +64,22 @@ const CategoryCard: React.FC<{ category: TechCategory }> = ({ category }) => {
         )}
       </div>
 
-      <div className="flex flex-col flex-1 border-y border-dashed border-zinc-200 dark:border-zinc-800 overflow-hidden">
+      <div className="flex flex-col flex-1 border-t border-dashed border-zinc-200 dark:border-zinc-800 min-h-0">
         {currentItems.map((item, idx) => (
-          <TechItemRow
-            key={`${page}-${idx}`}
-            item={item}
-            styles={styles}
-            isExpanded={expandedIndex === idx}
-            hasActiveExpansion={expandedIndex !== null}
-            onToggle={() =>
-              setExpandedIndex(expandedIndex === idx ? null : idx)
-            }
-          />
+          <div
+            key={item.name}
+            className="border-b border-dashed border-zinc-200 dark:border-zinc-800"
+          >
+            <TechItemRow
+              item={item}
+              styles={styles}
+              isExpanded={expandedIndex === idx}
+              hasActiveExpansion={expandedIndex !== null}
+              onToggle={() =>
+                setExpandedIndex(expandedIndex === idx ? null : idx)
+              }
+            />
+          </div>
         ))}
       </div>
     </div>
