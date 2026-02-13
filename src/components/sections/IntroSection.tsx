@@ -7,7 +7,7 @@ import tistoryLogo from "../../assets/logo/tistory.svg";
 import figmaLogo from "../../assets/logo/figma.svg";
 import instagramLogo from "../../assets/logo/instagram.svg";
 import gmailLogo from "../../assets/logo/gmail.svg";
-import profileImg from "../../assets/profile.jpg";
+import profileImg from "../../assets/profile.png";
 import solvedLogo from "../../assets/logo/solved.svg";
 import artstationLogo from "../../assets/logo/artstation.svg";
 
