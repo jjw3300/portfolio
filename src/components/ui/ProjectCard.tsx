@@ -58,8 +58,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     <div
                       className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-sm shrink-0 ${
                         award === "최우수상"
-                          ? "bg-gradient-to-r from-amber-400 to-amber-500 dark:bg-[#41321A]"
-                          : "bg-gradient-to-r from-gray-400 to-gray-500 dark:bg-[#3a3a3a]"
+                          ? "bg-linear-to-r from-amber-400 to-amber-500 dark:bg-[#41321A]"
+                          : "bg-linear-to-r from-gray-400 to-gray-500 dark:bg-[#3a3a3a]"
                       }`}
                     >
                       <Award

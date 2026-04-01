@@ -2,8 +2,12 @@ import React, { useState, useRef } from "react";
 import { Award, Play, Volume2, VolumeX } from "lucide-react";
 
 // Dynamically import all mp4 files from the video/instagram folder
-const videoModules = import.meta.glob("../../assets/video/instagram/*.mp4", { eager: true });
-const LOCAL_VIDEOS = Object.values(videoModules).map((mod) => (mod as { default: string }).default);
+const videoModules = import.meta.glob("../../assets/video/instagram/*.mp4", {
+  eager: true,
+});
+const LOCAL_VIDEOS = Object.values(videoModules).map(
+  (mod) => (mod as { default: string }).default,
+);
 
 const ReporterVideo: React.FC<{ url: string }> = ({ url }) => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -32,8 +36,8 @@ const ReporterVideo: React.FC<{ url: string }> = ({ url }) => {
   };
 
   return (
-    <div 
-      className="bg-black rounded-xl overflow-hidden relative flex flex-col items-center justify-center group cursor-pointer h-full w-full" 
+    <div
+      className="bg-black rounded-xl overflow-hidden relative flex flex-col items-center justify-center group cursor-pointer h-full w-full"
       onClick={togglePlay}
     >
       <video
@@ -47,7 +51,7 @@ const ReporterVideo: React.FC<{ url: string }> = ({ url }) => {
       />
       {/* Overlay Gradient for controls visibility */}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/60 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
+
       {/* Play/Pause Overlay */}
       {!isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none transition-opacity duration-300">
@@ -58,7 +62,7 @@ const ReporterVideo: React.FC<{ url: string }> = ({ url }) => {
       )}
 
       {/* Sound Toggle Button */}
-      <button 
+      <button
         onClick={toggleMute}
         className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/60 border border-white/20"
       >
@@ -85,7 +89,7 @@ const InstagramSection: React.FC = () => {
       {/* Header */}
       <div className="shrink-0 mb-3 md:mb-5 flex items-center justify-between gap-1 overflow-hidden">
         <h3 className="text-2xl md:text-3xl font-black text-zinc-900 dark:text-white flex items-center tracking-tight">
-          Reporter
+          Marketing Archive
         </h3>
         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-full text-xs font-bold shrink-0 border border-amber-200 dark:border-amber-500/30 shadow-sm whitespace-nowrap">
           <Award size={14} className="text-amber-500" />
