@@ -36,14 +36,14 @@ const ReporterVideo: React.FC<{ url: string }> = ({ url }) => {
   };
 
   return (
-    <div
-      className="bg-black rounded-xl overflow-hidden relative flex flex-col items-center justify-center group cursor-pointer h-full w-full"
+    <div 
+      className="bg-black overflow-hidden relative flex flex-col items-center justify-center group cursor-pointer h-full w-full transform-gpu" 
       onClick={togglePlay}
     >
       <video
         ref={videoRef}
         src={url}
-        className="w-full h-full object-cover transition-opacity duration-300"
+        className="w-full h-full object-cover transition-transform duration-300 scale-[1.01]"
         autoPlay
         loop
         muted={isMuted}
@@ -85,7 +85,7 @@ const InstagramSection: React.FC = () => {
   });
 
   return (
-    <div className="w-full md:w-[500px] h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 flex flex-col relative overflow-hidden transition-all duration-300 shadow-sm">
+    <div className="w-full md:w-112 h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 md:p-6 flex flex-col relative overflow-hidden transition-all duration-300 shadow-sm">
       {/* Header */}
       <div className="shrink-0 mb-3 md:mb-5 flex items-center justify-between gap-1 overflow-hidden">
         <h3 className="text-2xl md:text-3xl font-black text-zinc-900 dark:text-white flex items-center tracking-tight">
@@ -98,7 +98,7 @@ const InstagramSection: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 w-full bg-zinc-50 dark:bg-zinc-800/50 rounded-xl rounded-b-none border border-zinc-100 dark:border-zinc-800 border-b-0 p-2 overflow-hidden relative flex gap-2">
+      <div className="flex-1 overflow-hidden relative flex gap-1.5 md:gap-2 -mx-4 md:-mx-6">
         {randomVideos.length > 0 ? (
           randomVideos.map((videoSrc, idx) => (
             <div key={idx} className="flex-1 min-w-0 h-full">
@@ -113,8 +113,10 @@ const InstagramSection: React.FC = () => {
       </div>
 
       {/* Footer / Username */}
-      <div className="shrink-0 flex items-center justify-center p-3.5 bg-zinc-50 dark:bg-zinc-800/50 text-zinc-500 dark:text-zinc-400 font-mono text-sm rounded-b-xl border border-zinc-100 dark:border-zinc-800 border-t-0">
-        @ssafy_jinuk
+      <div className="shrink-0 pt-4 flex items-center justify-end">
+        <span className="font-bold text-base md:text-lg text-zinc-900 dark:text-white tracking-wide">
+          @ssafy_jinuk
+        </span>
       </div>
     </div>
   );
