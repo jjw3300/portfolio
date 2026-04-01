@@ -85,7 +85,7 @@ const InstagramSection: React.FC = () => {
   });
 
   return (
-    <div className="w-full md:w-md h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 md:p-6 flex flex-col relative overflow-hidden transition-all duration-300 shadow-sm">
+    <div className="w-full md:w-130 h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 md:p-6 flex flex-col relative overflow-hidden transition-all duration-300 shadow-sm">
       {/* Header */}
       <div className="shrink-0 mb-3 md:mb-5 flex items-center justify-between gap-1 overflow-hidden">
         <h3 className="text-2xl md:text-3xl font-black text-zinc-900 dark:text-white flex items-center tracking-tight">
@@ -98,7 +98,7 @@ const InstagramSection: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden relative flex gap-1.5 md:gap-2 -mx-4 md:-mx-6">
+      <div className="flex-1 overflow-hidden relative flex gap-4 md:gap-6 -mx-4 md:-mx-6">
         {randomVideos.length > 0 ? (
           randomVideos.map((videoSrc, idx) => (
             <div key={idx} className="flex-1 min-w-0 h-full">

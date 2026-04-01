@@ -56,26 +56,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   </span>
                   {award && (
                     <div
-                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-sm shrink-0 ${
+                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-sm shrink-0 border transition-colors duration-300 ${
                         award === "최우수상"
-                          ? "bg-linear-to-r from-amber-400 to-amber-500 dark:bg-[#41321A]"
-                          : "bg-linear-to-r from-gray-400 to-gray-500 dark:bg-[#3a3a3a]"
+                          ? "bg-amber-100 dark:bg-amber-500/20 border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-400"
+                          : "bg-slate-100 dark:bg-slate-500/20 border-slate-200 dark:border-slate-500/30 text-slate-700 dark:text-slate-400"
                       }`}
                     >
                       <Award
-                        className={`w-3.5 h-3.5 text-white ${
+                        className={`w-3.5 h-3.5 transition-colors duration-300 ${
                           award === "최우수상"
-                            ? "dark:text-amber-200"
-                            : "dark:text-gray-200"
+                            ? "text-amber-500 dark:text-amber-400"
+                            : "text-slate-500 dark:text-slate-400"
                         }`}
                       />
-                      <span
-                        className={`text-xs font-bold text-white ${
-                          award === "최우수상"
-                            ? "dark:text-amber-200"
-                            : "dark:text-gray-300"
-                        }`}
-                      >
+                      <span className="text-xs font-bold transition-colors duration-300">
                         {award}
                       </span>
                     </div>
