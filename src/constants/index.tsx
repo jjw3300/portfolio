@@ -2,6 +2,7 @@ import { Code2, Layout, Database, Image } from "lucide-react";
 import type { ReactNode } from "react";
 import portmatchVideo from "../assets/video/portmatch.mp4";
 import giterraVideo from "../assets/video/giterra.mp4";
+import neyoriruVideo from "../assets/video/please_cook_for_me.mp4";
 
 export interface Project {
   title: string;
@@ -78,7 +79,7 @@ export const PROJECT_DATA: Project[] = [
     ],
     techStack: ["React", "TS", "Zustand", "Firebase"],
     video: portmatchVideo,
-    link: "https://i14d205.p.ssafy.io",
+    link: "https://github.com/jjw3300",
   },
   {
     title: "Giterra",
@@ -92,6 +93,21 @@ export const PROJECT_DATA: Project[] = [
     ],
     techStack: ["React", "TS", "Tailwind", "Framer Motion"],
     video: giterraVideo,
+    link: "https://github.com/jjw3300",
+  },
+  {
+    title: "내 요리를 부탁해",
+    subtitle: "2인 협동 정보 비대칭 요리 시뮬레이션 게임",
+    period: "2026.02 ~ 2026.03",
+    description:
+      "마법 식재료와 독창적인 레시피를 활용하여 나만의 요리를 완성하는 판타지 요리 게임입니다. 구름 토마토, 수면 보석 조개 등 기발한 재료와 탄탄한 세계관 설정으로 몰입감 있는 플레이 경험을 제공합니다.",
+    features: [
+      "프로젝트 총괄 리드 및 판타지 세계관·시나리오 기획",
+      "독창적 식재료 기믹 구현 및 3D 에셋·사운드 디자인 통합",
+      "Photon Fusion 기반 실시간 멀티플레이 환경 구축",
+    ],
+    techStack: ["Unity", "C#", "Photon Fusion", "Blender"],
+    video: neyoriruVideo,
     link: "https://github.com/jjw3300",
   },
 ];
@@ -131,6 +147,12 @@ export const TECH_CATEGORIES: TechCategory[] = [
         rating: 1,
         description:
           "기초 문법과 객체지향의 기본 개념을 이해하며 기초적인 코드 해석 및 작성 가능",
+      },
+      {
+        name: "C#",
+        rating: 2,
+        description:
+          "Unity 게임 엔진을 활용하여 게임 로직 구현 및 스크립트 작성에 능숙하며 멀티플레이 네트워킹 구현 경험 보유",
       },
     ],
   },
@@ -202,6 +224,18 @@ export const TECH_CATEGORIES: TechCategory[] = [
           "디자인 시스템의 원리를 이해하고 변수와 컴포넌트를 활용한 효율적인 설계 구현 가능",
       },
       {
+        name: "Unity",
+        rating: 2,
+        description:
+          "게임 엔진의 기본 구조를 이해하고 씬 구성, 스크립트 작성, 에셋 통합을 통해 3D 게임 프로토타입 개발 가능",
+      },
+      {
+        name: "Blender",
+        rating: 2,
+        description:
+          "3D 모델링 및 렌더링의 기본 기능을 숙달하여 게임 에셋 및 시각화용 3D 콘텐츠 제작 가능",
+      },
+      {
         name: "DaVinci Resolve",
         rating: 2,
         description:
@@ -219,7 +253,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
 
 export const AWARDS_DATA: AchievementItem[] = [
   { id: 1, title: "SSAFY 기자단 최우수상", date: "2026.02" },
-  { id: 2, title: "preparation", isEmpty: true },
+  { id: 2, title: "SSAFY 특화 프로젝트 우수상", date: "2026.04" },
   { id: 3, title: "preparation", isEmpty: true },
   { id: 4, title: "preparation", isEmpty: true },
   { id: 5, title: "preparation", isEmpty: true },

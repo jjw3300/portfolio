@@ -89,7 +89,7 @@ const App: React.FC = () => {
 
       <div
         ref={targetRef}
-        className={`w-full relative ${isMobile ? "h-auto" : "h-[400vh] min-h-162.5"}`}
+        className={`w-full relative ${isMobile ? "h-auto" : "h-[550vh] min-h-162.5"}`}
       >
         <div
           className={`${isMobile ? "relative w-full h-auto" : "sticky top-0 left-0 w-full h-screen min-h-162.5 overflow-hidden flex items-center"}`}
