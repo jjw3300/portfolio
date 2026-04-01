@@ -13,6 +13,7 @@ export interface Project {
   techStack: string[];
   video: string;
   link: string;
+  award?: string;
 }
 
 export interface TechItem {
@@ -103,12 +104,13 @@ export const PROJECT_DATA: Project[] = [
       "마법 식재료와 독창적인 레시피를 활용하여 나만의 요리를 완성하는 판타지 요리 게임입니다. 구름 토마토, 수면 보석 조개 등 기발한 재료와 탄탄한 세계관 설정으로 몰입감 있는 플레이 경험을 제공합니다.",
     features: [
       "프로젝트 총괄 리드 및 판타지 세계관·시나리오 기획",
-      "독창적 식재료 기믹 구현 및 3D 에셋·사운드 디자인 통합",
-      "Photon Fusion 기반 실시간 멀티플레이 환경 구축",
+      "판타지 식재료 기믹 및 레시피 구상, C# 기반 식재료 기믹 구현",
+      "인게임 3D 에셋 제작 및 BGM·SFX 등 전반적 사운드 디자인",
     ],
     techStack: ["Unity", "C#", "Photon Fusion", "Blender"],
     video: neyoriruVideo,
     link: "https://github.com/jjw3300",
+    award: "우수상",
   },
 ];
 

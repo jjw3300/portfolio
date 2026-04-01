@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -10,6 +10,7 @@ interface ProjectCardProps {
   techStack: string[];
   video: string;
   link: string;
+  award?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -21,6 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   techStack,
   video,
   link,
+  award,
 }) => {
   return (
     <div className="w-full md:w-225 h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-10 shadow-sm flex flex-col justify-center relative group overflow-hidden">
@@ -48,11 +50,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="flex-1 flex flex-col justify-between py-2 z-10 min-w-0">
           <div>
             <div className="flex justify-between items-start mb-4">
-              <div>
-                <span className="inline-block px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-bold text-blue-500 mb-3">
-                  {period}
-                </span>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-zinc-900 dark:text-white tracking-tight leading-tight truncate">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-block px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-bold text-blue-500">
+                    {period}
+                  </span>
+                  {award && (
+                    <div
+                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-sm shrink-0 ${
+                        award === "최우수상"
+                          ? "bg-gradient-to-r from-amber-400 to-amber-500 dark:bg-[#41321A]"
+                          : "bg-gradient-to-r from-gray-400 to-gray-500 dark:bg-[#3a3a3a]"
+                      }`}
+                    >
+                      <Star
+                        className={`w-3.5 h-3.5 fill-white text-white ${
+                          award === "최우수상"
+                            ? "dark:fill-amber-200 dark:text-amber-200"
+                            : "dark:fill-gray-300 dark:text-gray-300"
+                        }`}
+                      />
+                      <span
+                        className={`text-xs font-bold text-white ${
+                          award === "최우수상"
+                            ? "dark:text-amber-200"
+                            : "dark:text-gray-300"
+                        }`}
+                      >
+                        {award}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-zinc-900 dark:text-white tracking-tight leading-tight">
                   {title}
                 </h3>
                 <p className="text-sm md:text-base font-medium text-zinc-500 dark:text-zinc-400 mt-1">
