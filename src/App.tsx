@@ -6,6 +6,7 @@ import ProjectCard from "./components/ui/ProjectCard";
 import ScrollOnboarding from "./components/ui/ScrollOnboarding";
 import IntroSection from "./components/sections/IntroSection";
 import TechStackSection from "./components/sections/TechStackSection";
+import InstagramSection from "./components/sections/InstagramSection";
 import AwardsSection from "./components/sections/AwardsSection";
 
 import { PROJECT_DATA } from "./constants";
@@ -114,6 +115,8 @@ const App: React.FC = () => {
             ))}
 
             <TechStackSection />
+
+            <InstagramSection />
 
             <AwardsSection />
           </motion.div>

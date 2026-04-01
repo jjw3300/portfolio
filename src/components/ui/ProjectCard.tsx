@@ -1,5 +1,4 @@
-import React from "react";
-import { ArrowUpRight, CheckCircle2, Star } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Award } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -63,11 +62,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                           : "bg-gradient-to-r from-gray-400 to-gray-500 dark:bg-[#3a3a3a]"
                       }`}
                     >
-                      <Star
-                        className={`w-3.5 h-3.5 fill-white text-white ${
+                      <Award
+                        className={`w-3.5 h-3.5 text-white ${
                           award === "최우수상"
-                            ? "dark:fill-amber-200 dark:text-amber-200"
-                            : "dark:fill-gray-300 dark:text-gray-300"
+                            ? "dark:text-amber-200"
+                            : "dark:text-gray-200"
                         }`}
                       />
                       <span

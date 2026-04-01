@@ -99,7 +99,7 @@ export const PROJECT_DATA: Project[] = [
   {
     title: "내 요리를 부탁해",
     subtitle: "2인 협동 정보 비대칭 요리 시뮬레이션 게임",
-    period: "2026.02 ~ 2026.03",
+    period: "2026.02 ~ 2026.03 (7주)",
     description:
       "마법 식재료와 독창적인 레시피를 활용하여 나만의 요리를 완성하는 판타지 요리 게임입니다. 구름 토마토, 수면 보석 조개 등 기발한 재료와 탄탄한 세계관 설정으로 몰입감 있는 플레이 경험을 제공합니다.",
     features: [
@@ -273,4 +273,15 @@ export const CERTIFICATIONS_DATA: AchievementItem[] = [
   { id: 6, title: "preparation", isEmpty: true },
   { id: 7, title: "preparation", isEmpty: true },
   { id: 8, title: "preparation", isEmpty: true },
+];
+
+export const INSTAGRAM_REELS: string[] = [
+  "https://www.instagram.com/reel/DNqDyWzJ6c2/",
+  "https://www.instagram.com/reel/DPNGuUajuZp/",
+  "https://www.instagram.com/reel/DQa4A9lDaFc/",
+  "https://www.instagram.com/reel/DRt3VUAjEJj/",
+  "https://www.instagram.com/reel/DS3svoBllfw/",
+  "https://www.instagram.com/reel/DUAZolegMqw/",
+  "https://www.instagram.com/reel/DVptbysGT8d/",
+  "https://www.instagram.com/reel/DWkwsCRmITb/",
 ];
