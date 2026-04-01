@@ -49,7 +49,7 @@ const IntroSection: React.FC = () => {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-4xl lg:text-4xl font-black text-zinc-900 dark:text-white leading-[1.1] tracking-tight mb-6 break-keep">
+          <h1 className="text-4xl md:text-4xl lg:text-4xl font-black text-zinc-900 dark:text-white leading-[1.2] tracking-tight mb-6 break-keep">
             사용자 경험을
             <br />
             <span className="text-blue-500">최우선으로 생각하는</span>
