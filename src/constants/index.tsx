@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import portmatchVideo from "../assets/video/portmatch.mp4";
 import giterraVideo from "../assets/video/giterra.mp4";
 import neyoriruVideo from "../assets/video/please_cook_for_me.mp4";
+import aloeVeraVideo from "../assets/video/aloe_vera.mp4";
 
 export interface Project {
   title: string;
@@ -85,7 +86,7 @@ export const PROJECT_DATA: Project[] = [
   {
     title: "Giterra",
     subtitle: "GitHub 데이터 3D 시각화",
-    period: "2026.02 ~ 진행 중",
+    period: "2026.02 ~ 2026.03 (4주)",
     description:
       "GitHub 활동 데이터를 우주 속 행성 컨셉으로 재해석한 몰입형 프로파일러입니다. 텍스트 데이터를 3D 인터랙션으로 변환하여 시각적 즐거움을 제공합니다.",
     features: [
@@ -112,6 +113,21 @@ export const PROJECT_DATA: Project[] = [
     link: "https://github.com/jjw3300",
     award: "우수상",
   },
+  {
+    title: "ALOE VERA",
+    subtitle: "Electron 기반 AI 데스크톱 통합 도구",
+    period: "2026.04 ~ 2026.05 (8주)",
+    description:
+      "Electron을 기반으로 데스크톱 환경에서 안정적인 AI 프로세스 통신과 안전한 렌더러 메시징을 구현한 데스크톱 애플리케이션입니다.",
+    features: [
+      "BrowserWindow와 IPC를 활용한 안전한 렌더러-메인 통신",
+      "electron-log 기반 예외 및 프로세스 종료 로그 추적",
+      "AI 프로세스 비정상 종료 감지 및 graceful shutdown 처리",
+    ],
+    techStack: ["Electron", "TypeScript", "Node.js", "IPC"],
+    video: aloeVeraVideo,
+    link: "https://github.com/jjw3300",
+  },
 ];
 
 export const TECH_CATEGORIES: TechCategory[] = [
@@ -122,9 +138,9 @@ export const TECH_CATEGORIES: TechCategory[] = [
     items: [
       {
         name: "TypeScript",
-        rating: 2,
+        rating: 3,
         description:
-          "정적 타이핑과 고급 타입을 활용해 독립적인 모듈 설계 및 디버깅 가능",
+          "정적 타이핑과 제네릭, 조건부 타입을 활용하여 대규모 애플리케이션을 안전하고 유지보수하기 쉽게 설계 가능",
       },
       {
         name: "JavaScript",
@@ -195,22 +211,28 @@ export const TECH_CATEGORIES: TechCategory[] = [
     color: "text-green-500",
     items: [
       {
+        name: "Git",
+        rating: 3,
+        description:
+          "형상 관리 및 협업 워크플로우에 능숙하며, 브랜치 전략과 코드 리뷰로 안정적인 배포를 지원 가능",
+      },
+      {
         name: "Firebase",
         rating: 2,
         description:
           "실시간 데이터베이스 및 인증 시스템을 독립적으로 구축하고 운영 가능",
       },
       {
-        name: "Git",
-        rating: 2,
-        description:
-          "브랜치 전략을 숙지하여 협업 과정에서의 형상 관리 및 충돌 문제 해결 경험",
-      },
-      {
         name: "Vercel",
         rating: 1,
         description:
           "제공되는 플랫폼 기능을 활용하여 프로젝트 배포 및 기본 환경 설정 수행 가능",
+      },
+      {
+        name: "Electron",
+        rating: 1,
+        description:
+          "데스크톱 앱 환경에서 IPC와 프로세스 관리를 구현하여 안정적인 앱 실행을 지원 가능",
       },
     ],
   },
@@ -267,7 +289,7 @@ export const AWARDS_DATA: AchievementItem[] = [
 export const CERTIFICATIONS_DATA: AchievementItem[] = [
   { id: 1, title: "한국사능력검정시험 1급", date: "2025.02" },
   { id: 2, title: "KBS 한국어능력시험 3+급", date: "2025.10" },
-  { id: 3, title: "preparation", isEmpty: true },
+  { id: 3, title: "정보처리기사 필기", date: "2026.05" },
   { id: 4, title: "preparation", isEmpty: true },
   { id: 5, title: "preparation", isEmpty: true },
   { id: 6, title: "preparation", isEmpty: true },

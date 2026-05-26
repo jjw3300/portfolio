@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div className="w-full md:w-225 h-auto md:h-130 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-10 shadow-sm flex flex-col justify-center relative group overflow-hidden">
       <div className="flex flex-col md:flex-row gap-8 md:gap-10 h-full">
-        <div className="w-full md:w-1/2 h-48 md:h-full rounded-2xl overflow-hidden relative shadow-inner border border-zinc-100 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800 shrink-0 flex items-center justify-center">
+        <div className="w-full md:w-1/2 h-48 md:h-full rounded-2xl overflow-hidden relative shadow-inner border border-zinc-100 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800 shrink-0 flex items-center justify-center py-2 px-0">
           {video ? (
             <video
               src={video}
@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               loop
               muted
               playsInline
-              className="w-full h-full object-cover scale-105"
+              className="w-full h-full object-contain"
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-full h-full gap-2">

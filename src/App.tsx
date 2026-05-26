@@ -17,6 +17,7 @@ const App: React.FC = () => {
 
   const [isMobile, setIsMobile] = useState(false);
   const [scrollRange, setScrollRange] = useState(0);
+  const [targetHeightVh, setTargetHeightVh] = useState(550);
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,8 +28,14 @@ const App: React.FC = () => {
       if (!mobileCheck && scrollRef.current) {
         const scrollableWidth = scrollRef.current.scrollWidth - width;
         setScrollRange(scrollableWidth > 0 ? scrollableWidth : 0);
+        const extraHeight = Math.max(
+          0,
+          Math.ceil((scrollableWidth / width) * 100),
+        );
+        setTargetHeightVh(550 + extraHeight);
       } else {
         setScrollRange(0);
+        setTargetHeightVh(550);
       }
     };
 
@@ -90,7 +97,12 @@ const App: React.FC = () => {
 
       <div
         ref={targetRef}
-        className={`w-full relative ${isMobile ? "h-auto" : "h-[550vh] min-h-162.5"}`}
+        className="w-full relative"
+        style={
+          isMobile
+            ? undefined
+            : { height: `${targetHeightVh}vh`, minHeight: "162.5vh" }
+        }
       >
         <div
           className={`${isMobile ? "relative w-full h-auto" : "sticky top-0 left-0 w-full h-screen min-h-162.5 overflow-hidden flex items-center"}`}

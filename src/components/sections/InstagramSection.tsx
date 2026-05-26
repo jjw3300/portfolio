@@ -101,7 +101,10 @@ const InstagramSection: React.FC = () => {
       <div className="flex-1 overflow-hidden relative flex gap-6 md:gap-14 -mx-4 md:-mx-6">
         {randomVideos.length > 0 ? (
           randomVideos.map((videoSrc, idx) => (
-            <div key={idx} className="flex-1 min-w-0 aspect-9/16 md:aspect-auto md:h-full bg-black">
+            <div
+              key={idx}
+              className="flex-1 min-w-0 aspect-9/16 md:aspect-auto md:h-full bg-black"
+            >
               <ReporterVideo url={videoSrc} />
             </div>
           ))
